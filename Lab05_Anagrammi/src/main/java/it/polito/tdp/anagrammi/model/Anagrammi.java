@@ -3,7 +3,15 @@ package it.polito.tdp.anagrammi.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import it.polito.tdp.anagrammi.db.AnagrammaDAO;
+
 public class Anagrammi {
+	
+	AnagrammaDAO corretto;
+	
+	public Anagrammi() {
+		this.corretto = new AnagrammaDAO();
+	}
 	
 	public Set<String> calcolaAnagrammi(String parola) {
 		
@@ -28,6 +36,10 @@ public class Anagrammi {
 				permuta(nuovaParziale, nuovaLettere, livello+1, anagrammi);
 			}
 		}
+	}
+	
+	public boolean isCorretto(String parola) {
+		return this.corretto.isCorret(parola);
 	}
 
 }
